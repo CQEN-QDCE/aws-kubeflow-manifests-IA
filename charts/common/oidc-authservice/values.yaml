@@ -1,2 +1,13 @@
-null
-...
+OIDC_PROVIDER:
+OIDC_AUTH_URL:
+OIDC_SCOPES:
+REDIRECT_URL:
+SKIP_AUTH_URI:
+USERID_HEADER: kubeflow-userid
+USERID_PREFIX: 
+USERID_CLAIM: email
+Preferred_Username: preferred_username
+PORT: "'8080'"
+STORE_PATH: /var/lib/authservice/data.db
+CLIENT_ID: 
+CLIENT_SECRET:
