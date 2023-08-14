@@ -6,6 +6,7 @@ metadata:
   name: mysql-pv-claim
   namespace: kubeflow
 spec:
+  storageClassName: gp2
   accessModes:
   - ReadWriteOnce
   resources:
