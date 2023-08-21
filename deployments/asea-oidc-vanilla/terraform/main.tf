@@ -78,7 +78,7 @@ module "ceai_lib" {
 module "sea_network" {
   source = "./.terraform/modules/ceai_lib/aws/sea-network"
   
-  aws_profile = "lab_ai"
+  aws_profile = local.aws_profile
   workload_account_type = "Sandbox"
 }
 
