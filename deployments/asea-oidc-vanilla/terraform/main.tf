@@ -99,6 +99,18 @@ module "eks_blueprints" {
   tags                = local.tags
 }
 
+resource "null_resource" "storage_class" {
+  triggers = {
+    # Change this trigger whenever you want to apply the annotation
+    timestamp = timestamp()
+  }
+
+  provisioner "local-exec" {
+    command = "kubectl apply -f ../../base/sc-gp2.yml --force"
+  }
+  depends_on = [ module.eks_blueprints ]
+}
+
 module "eks_blueprints_kubernetes_addons" {
   source = "github.com/aws-ia/terraform-aws-eks-blueprints//modules/kubernetes-addons?ref=v4.32.1"
 
@@ -110,8 +122,28 @@ module "eks_blueprints_kubernetes_addons" {
   # EKS Managed Add-ons
   enable_amazon_eks_vpc_cni            = true
   enable_amazon_eks_coredns            = true
+  amazon_eks_coredns_config = {
+    most_recent        = true
+    kubernetes_version = local.eks_version
+    resolve_conflicts  = "OVERWRITE"
+  }
+
   enable_amazon_eks_kube_proxy         = true
+  amazon_eks_kube_proxy_config = {
+    most_recent        = true
+    kubernetes_version = local.eks_version
+    resolve_conflicts  = "OVERWRITE"
+  }
+
+  
+  amazon_eks_aws_ebs_csi_driver_config = {
+    resolve_conflicts        = "OVERWRITE"
+    most_recent        = true
+    kubernetes_version = local.eks_version
+  }
+
   enable_amazon_eks_aws_ebs_csi_driver = true
+
 
   # EKS Blueprints Add-ons
   enable_cert_manager                 = true
@@ -126,8 +158,11 @@ module "eks_blueprints_kubernetes_addons" {
 
   enable_nvidia_device_plugin = local.using_gpu
 
+  enable_karpenter = true
+
   tags = local.tags
 
+  depends_on = [ null_resource.storage_class ]
 }
 
 
