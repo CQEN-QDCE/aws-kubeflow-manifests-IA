@@ -106,7 +106,7 @@ resource "null_resource" "storage_class" {
   }
 
   provisioner "local-exec" {
-    command = "kubectl apply -f ../../base/sc-gp2.yml --force"
+    command = "kubectl replace -f ../../base/sc-gp2.yml"
   }
   depends_on = [ module.eks_blueprints ]
 }
