@@ -26,6 +26,7 @@ variable "eks_version" {
 variable "aws_profile" {
   type        = string
   description = "SSO login profile name in .aws/config file on workstation running deployment"
+  default     = "lab-dev"
 }
 
 variable "environment" {
@@ -79,7 +80,7 @@ variable "notebook_idleness_check_period" {
 variable "load_balancer_scheme" {
   description = "Load Balancer Scheme"
   type        = string
-  default     = "internet-facing"
+  default     = "internal"
 }
 
 variable "certificate_arn" {

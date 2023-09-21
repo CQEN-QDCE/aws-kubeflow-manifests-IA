@@ -53,7 +53,7 @@ variable "tags" {
 variable "load_balancer_scheme" {
   description = "Load Balancer Scheme"
   type        = string
-  default     = "internet-facing"
+  default     = "internal"
 }
 
 variable "certificate_arn" {
