@@ -79,7 +79,7 @@ module "sea_network" {
   source = "./.terraform/modules/ceai_lib/aws/sea-network"
   
   aws_profile = local.aws_profile
-  workload_account_type = "Sandbox"
+  workload_account_type = local.environment
 }
 
 #---------------------------------------------------------------
@@ -99,16 +99,18 @@ module "eks_blueprints" {
   tags                = local.tags
 }
 
-resource "null_resource" "storage_class" {
-  triggers = {
-    # Change this trigger whenever you want to apply the annotation
-    timestamp = timestamp()
-  }
-
+resource "null_resource" "kubeconfig" {
   provisioner "local-exec" {
-    command = "kubectl replace -f ../../base/sc-gp2.yml"
+    command = "aws eks --region ${local.region} update-kubeconfig --name ${local.cluster_name} --profile ${local.aws_profile}"
   }
   depends_on = [ module.eks_blueprints ]
+}
+
+resource "null_resource" "storage_class" {
+  provisioner "local-exec" {
+    command = "kubectl apply -f .././base/sc-gp2.yml --force"
+  }
+  depends_on = [ null_resource.kubeconfig ]
 }
 
 module "eks_blueprints_kubernetes_addons" {
