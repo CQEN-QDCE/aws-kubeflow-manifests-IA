@@ -1,15 +1,18 @@
 apiVersion: v1
 data:
-  AUTHSERVICE_URL_PREFIX: /authservice/
-  OIDC_AUTH_URL: /dex/auth
-  OIDC_PROVIDER: http://dex.auth.svc.cluster.local:5556/dex
-  OIDC_SCOPES: profile email groups
-  PORT: '"8080"'
-  SKIP_AUTH_URLS: /dex
+  AUTHSERVICE_URL_PREFIX: {{ .Values.AUTHSERVICE_URL_PREFIX }}
+  OIDC_PROVIDER: {{ .Values.OIDC_PROVIDER }}
+  OIDC_AUTH_URL: {{ .Values.OIDC_AUTH_URL }}
+  OIDC_SCOPES: {{ .Values.OIDC_SCOPES }}
+  PORT: {{ .Values.PORT }}
+  REDIRECT_URL: {{ .Values.REDIRECT_URL }}
   STORE_PATH: /var/lib/authservice/data.db
-  USERID_CLAIM: email
-  USERID_HEADER: kubeflow-userid
+  SKIP_AUTH_URI: {{ .Values.SKIP_AUTH_URI }}
+  USERID_CLAIM: {{ .Values.USERID_CLAIM }}
+  USERID_HEADER: {{ .Values.USERID_HEADER }}
   USERID_PREFIX: ''
+  Preferred_Username: {{ .Values.Preferred_Username }}
+
 kind: ConfigMap
 metadata:
   name: oidc-authservice-parameters
