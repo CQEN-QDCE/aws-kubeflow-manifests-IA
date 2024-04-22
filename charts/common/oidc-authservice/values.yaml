@@ -4,7 +4,6 @@ OIDC_SCOPES: ${OIDC_SCOPES}
 REDIRECT_URL: ${REDIRECT_URL }
 SKIP_AUTH_URI: ${SKIP_AUTH_URI}
 USERID_HEADER: kubeflow-userid
-USERID_PREFIX: ${USERID_PREFIX}
 USERID_CLAIM: email
 Preferred_Username: preferred_username
 PORT: "'8080'"
