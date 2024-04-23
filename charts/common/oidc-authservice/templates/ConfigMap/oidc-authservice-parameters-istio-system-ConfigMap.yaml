@@ -1,5 +1,6 @@
 apiVersion: v1
 data:
+  AUTHSERVICE_URL_PREFIX: /authservice/
   OIDC_PROVIDER: {{ .Values.OIDC_PROVIDER }}
   OIDC_AUTH_URL: {{ .Values.OIDC_AUTH_URL }}
   OIDC_SCOPES: {{ .Values.OIDC_SCOPES }}
