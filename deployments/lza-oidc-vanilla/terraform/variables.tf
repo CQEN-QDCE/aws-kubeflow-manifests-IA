@@ -7,17 +7,32 @@ variable "cluster_name" {
     condition     = length(var.cluster_name) > 0 && length(var.cluster_name) <= 19
     error_message = "The cluster name must be between [1, 19] characters"
   }
+
+  default     = "eks-cluster"
 }
 
 variable "cluster_region" {
   description = "Region to create the cluster"
   type        = string
+  default     = "ca-central-1"
 }
 
 variable "eks_version" {
   description = "The EKS version to use"
   type        = string
   default     = "1.25"
+}
+
+variable "aws_profile" {
+  type        = string
+  description = "SSO login profile name in .aws/config file on workstation running deployment"
+  default     = "lab-dev"
+}
+
+variable "environment" {
+  type        = string
+  description = "Name of system environment deployed on AWS"
+  default     = "Dev"
 }
 
 variable "node_instance_type" {
@@ -30,18 +45,6 @@ variable "node_instance_type_gpu" {
   description = "The instance type of a gpu EKS node. Will result in the creation of a separate gpu node group when not null"
   type        = string
   default     = null
-}
-
-variable "node_disk_size_cpu" {
-  description = "The disk size of a cpu node."
-  type        = string
-  default     = 50
-}
-
-variable "node_disk_size_gpu" {
-  description = "The disk size of a gpu node."
-  type        = string
-  default     = 75
 }
 
 variable "enable_aws_telemetry" {
@@ -72,4 +75,20 @@ variable "notebook_idleness_check_period" {
   description = "How frequently the controller should poll each Notebook to update its LAST_ACTIVITY_ANNOTATION (minutes)"
   type        = string
   default     = 5
+}
+
+variable "load_balancer_scheme" {
+  description = "Load Balancer Scheme"
+  type        = string
+  default     = "internal"
+}
+
+variable "certificate_arn" {
+  description = "The ARN of ACM"
+  type        = string
+}
+
+variable "subnet_ids" {
+  type        = string
+  description = "Subnets for this load balancer"
 }

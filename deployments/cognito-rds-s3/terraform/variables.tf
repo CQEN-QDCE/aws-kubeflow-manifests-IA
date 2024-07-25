@@ -32,6 +32,18 @@ variable "node_instance_type_gpu" {
   default     = null
 }
 
+variable "node_disk_size_cpu" {
+  description = "The disk size of a cpu node."
+  type        = string
+  default     = 50
+}
+
+variable "node_disk_size_gpu" {
+  description = "The disk size of a gpu node."
+  type        = string
+  default     = 75
+}
+
 variable "kf_helm_repo_path" {
   description = "Full path to the location of the helm repo for KF"
   type        = string
@@ -105,7 +117,7 @@ variable "db_allocated_storage" {
 variable "mysql_engine_version" {
   type        = string
   description = "The engine version of MySQL"
-  default     = "8.0.32"
+  default     = "8.0.34"
 }
 
 variable "backup_retention_period" {
