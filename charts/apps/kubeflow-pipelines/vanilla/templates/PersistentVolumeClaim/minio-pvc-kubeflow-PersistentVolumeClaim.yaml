@@ -6,6 +6,7 @@ metadata:
   name: minio-pvc
   namespace: kubeflow
 spec:
+  storageClassName: gp2
   accessModes:
   - ReadWriteOnce
   resources:

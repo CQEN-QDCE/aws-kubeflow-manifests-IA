@@ -4,6 +4,7 @@ metadata:
   name: authservice-pvc
   namespace: istio-system
 spec:
+  storageClassName: gp2
   accessModes:
   - ReadWriteOnce
   resources:
