@@ -1,6 +1,0 @@
-apiVersion: v2
-appVersion: 1.8.1
-description: A Helm chart for Kubernetes
-name: knative-eventing
-type: application
-version: 0.2.0

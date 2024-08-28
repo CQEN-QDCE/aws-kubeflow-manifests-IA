@@ -1,16 +1,17 @@
 apiVersion: v2
-appVersion: 0.2.0
-description: A Helm chart for Kubernetes
-name: kubeflow
+name: test
+description: A Parent Helm chart for Kubernetes
 type: application
-version: 0.2.0
+# This is the chart version. This version number should be incremented each time you make changes
+# to the chart and its templates
+version: 0.1.0
 
 dependencies:
   - name: oidc-authservice
     version: 0.1.0
-    repository: file://common/oidc-authservice
+    repository: file://charts/common/oidc-authservice
   - name: kubeflow-namespace
     version: 0.1.0
-    repository: file://common/kubeflow-namespace
+    repository: file://charts/common/kubeflow-namespace
 
 
