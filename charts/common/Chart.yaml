@@ -9,7 +9,32 @@ dependencies:
     version: 0.2.0
     repository: file://oidc-authservice
   - name: kubeflow-namespace
-    version: v1.7.0
+    version: 0.1.0
     repository: file://kubeflow-namespace
-
-
+  - name: aws-telemetry
+    version: 0.2.0
+    repository: file://aws-telemetry
+  - name: kserve
+    version: 0.2.0
+    repository: file://kserve
+  - name: kubeflow-issuer
+    version: 0.1.0
+    repository: file://kubeflow-issuer
+  - name: istio
+    version: 0.2.0
+    repository: file://istio
+  - name: knative-serving
+    version: 0.2.0
+    repository: file://knative-serving
+  - name: cluster-local-gateway
+    version: 0.2.0
+    repository: file://cluster-local-gateway
+  - name: knative-eventing
+    version: 0.2.0
+    repository: file://knative-eventing
+  - name: kubeflow-roles
+    version: 0.1.0
+    repository: file://kubeflow-roles
+  - name: kubeflow-istio-resources
+    version: 0.2.0
+    repository: file://kubeflow-istio-resources
