@@ -8,6 +8,8 @@ dependencies:
   - name: oidc-authservice
     version: 0.2.0
     repository: file://oidc-authservice
+    import-values:
+      - data
   - name: kubeflow-namespace
     version: 0.1.0
     repository: file://kubeflow-namespace

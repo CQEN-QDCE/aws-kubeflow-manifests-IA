@@ -1,30 +1,15 @@
 oidc-authservice:
-  env:
-    - name: AUTHSERVICE_URL_PREFIX
-      value: ${AUTHSERVICE_URL_PREFIX}
-    - name: OIDC_PROVIDER
-      value: ${OIDC_PROVIDER}
-    - name: OIDC_AUTH_URL
-      value: ${OIDC_AUTH_URL}
-    - name: OIDC_AUTHSERVICE_IMAGE
-      value: ${OIDC_AUTHSERVICE_IMAGE}
-    - name: OIDC_SCOPES
-      value: ${OIDC_SCOPES}
-    - name: REDIRECT_URL
-      value: ${REDIRECT_URL}
-    - name: SKIP_AUTH_URI
-      value: ${SKIP_AUTH_URI}
-    - name: USERID_HEADER
-      value: "kubeflow-userid"
-    - name: USERID_CLAIM
-      value: "email"
-    - name: Preferred_Username
-      value: "preferred_username"
-    - name: PORT
-      value: "'8080'"
-    - name: STORE_PATH
-      value: "/var/lib/authservice/data.db"
-    - name: CLIENT_ID
-      value: ${CLIENT_ID}
-    - name: CLIENT_SECRET
-      value: ${CLIENT_SECRET}
+  AUTHSERVICE_URL_PREFIX: ${AUTHSERVICE_URL_PREFIX}
+  OIDC_PROVIDER: ${OIDC_PROVIDER}
+  OIDC_AUTH_URL: ${OIDC_AUTH_URL}
+  OIDC_AUTHSERVICE_IMAGE: ${OIDC_AUTHSERVICE_IMAGE}
+  OIDC_SCOPES: ${OIDC_SCOPES}
+  REDIRECT_URL: ${REDIRECT_URL }
+  SKIP_AUTH_URI: ${SKIP_AUTH_URI}
+  USERID_HEADER: kubeflow-userid
+  USERID_CLAIM: email
+  Preferred_Username: preferred_username
+  PORT: "'8080'"
+  STORE_PATH: /var/lib/authservice/data.db
+  CLIENT_ID: ${CLIENT_ID}
+  CLIENT_SECRET: ${CLIENT_SECRET}
